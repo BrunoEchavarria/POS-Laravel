@@ -4,7 +4,7 @@
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Inicio</div>
                             <a class="nav-link" href="{{ route('panel') }}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-chart-simple"></i></div>
                                 Panel
                             </a>
                             <!-- <div class="sb-sidenav-menu-heading">Interface</div>
@@ -56,13 +56,19 @@
                                 Categorias
                             </a>
                             <a class="nav-link" href="{{route('presentaciones.index')}}">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-box-archive"></i></div>
                                 Presentaciones
                             </a>
                             <a class="nav-link" href="{{route('marca.index')}}">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-dolly"></i></div>
                                 Marcas
                             </a>
+                            <a class="nav-link" href="{{route('producto.index')}}">
+                                <div class="sb-nav-link-icon"><i class="fa-brands fa-shopify"></i></div>
+                                Productos
+                            </a>
                             <a class="nav-link" href="#">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-table-list"></i></div>
                                 Tables
                             </a>
                             

@@ -3,6 +3,7 @@
 use App\Http\Controllers\categoriaController;
 use App\Http\Controllers\marcaController;
 use App\Http\Controllers\precentacionesController;
+use App\Http\Controllers\ProductoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +26,8 @@ Route::view('/panel','panel.index')->name('panel');
 Route::resources([
     'categorias' => categoriaController::class,
     'marca'=> marcaController::class,
-    'presentaciones' => precentacionesController::class
+    'presentaciones' => precentacionesController::class,
+    'producto' => ProductoController::class
 ]);
 
 Route::get('/login', function () {

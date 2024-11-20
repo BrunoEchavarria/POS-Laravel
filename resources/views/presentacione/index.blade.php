@@ -5,6 +5,12 @@
 @push('css')
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+            .datatable-selector{
+        padding-left: 1.125rem;
+        padding-right: 2.125rem;
+    }
+    </style>
 @endpush
 
 @section('content')
@@ -119,3 +125,8 @@
 </div>
 
 @endsection
+
+@push('js')
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
+    <script src="{{asset('js/datatables-simple-demo.js')}}"></script>
+@endpush
