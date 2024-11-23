@@ -105,7 +105,12 @@
                                   <button type="submit" class="btn btn-warning">Editar</button>
                                 </form>
                                  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#verModal-{{$producto->id}}">Ver</button>
-                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal">Eliminar</button>
+                                 @if ($producto->estado == 1)
+                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$producto->id}}">Eliminar</button>
+                                 @else
+                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$producto->id}}">Restaurar</button>
+                                 @endif
+
                                </div>
                          </td>
                     </tr>
@@ -140,17 +145,44 @@
                                     @if($producto->img_path != null)
                                         <img src="{{ Storage::url('public/productos/'.$producto->img_path) }}" alt="{{ $producto->nombre }}" class="img-fluid img-thumbnail">
                                     @else
-                                        <img src="" alt="{{$producto->nombrez}}">
+                                        <img src="" alt="{{$producto->nombre}}">
                                     @endif
                                 </div>
                               </div>
                             </div>
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                             </div>
                           </div>
                         </div>
-                      </div>
+                    </div>
+
+                    <div class="modal fade" id="confirmModal-{{$producto->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              {{$producto->estado == 1 ? 'Esta seguro de eliminar el producto?' : 'Esta seguro que quiere restaurar el producto?'}}
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                              <form action="{{route('producto.destroy', ['producto'=>$producto->id])}}" method="POST">
+                                    @method('DELETE')
+                                    @csrf
+                                    @if ($producto->estado == 1)
+                                        <button type="submit" class="btn btn-danger">Confirmar</button>
+                                    @else
+                                    <button type="submit" class="btn btn-success">Restaurar</button>
+                                    @endif
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+
                     @endforeach
                  </tbody>
             </table>

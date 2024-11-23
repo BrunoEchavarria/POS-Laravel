@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'presentaciones')
+@section('title', 'Presentaciones')
 
 @push('css')
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
