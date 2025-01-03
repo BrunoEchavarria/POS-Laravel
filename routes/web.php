@@ -2,9 +2,12 @@
 
 use App\Http\Controllers\categoriaController;
 use App\Http\Controllers\clienteController;
+use App\Http\Controllers\compraController;
 use App\Http\Controllers\marcaController;
 use App\Http\Controllers\precentacionesController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\proveedoresController;
+use App\Http\Controllers\ventaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,7 +32,10 @@ Route::resources([
     'marca'=> marcaController::class,
     'presentaciones' => precentacionesController::class,
     'producto' => ProductoController::class,
-    'clientes' => clienteController::class
+    'clientes' => clienteController::class,
+    'proveedores' => proveedoresController::class,
+    'compras' => compraController::class,
+    'ventas' => ventaController::class,
 ]);
 
 
