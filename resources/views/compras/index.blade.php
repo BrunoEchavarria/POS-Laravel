@@ -76,7 +76,7 @@
                         <td>
                             {{ 
                                 \Carbon\Carbon::parse($compra->fecha_hora)->format('d-m-Y') .' - '.
-                                \Carbon\Carbon::parse($compra->fecha_hora)->format('H:i') 
+                                \Carbon\Carbon::parse($compra->fecha_hora)->format('H:i:s') 
                             }}
                         </td>
                         <td>

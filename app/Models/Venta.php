@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Venta extends Model
 {
+    //especificar que no queremos que guarde
+    protected $guarded = ['id'];
+
     use HasFactory;
 
     public function cliente(){

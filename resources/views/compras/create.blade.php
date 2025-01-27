@@ -19,7 +19,7 @@
         </ol>
     </div>
 
-    <form action="{{route('compras.store')}}" method="post">
+    <form action="{{route('ventas.store')}}" method="post">
         @csrf
 
         <div class="container mt-4">
@@ -47,6 +47,12 @@
                                 <input  type="number" name="cantidad" id="cantidad" class="form-control">
                             </div>
 
+                            {{-- precio de compra --}}
+                            <div class="col-md-4 mb-2">
+                                <label for="precio_compra" class="form-label">Precio de compra: </label>
+                                <input  type="number" name="precio_compra" id="precio_compra" class="form-control" step="0.1">
+                            </div>
+
                             {{-- precio de venta --}}
                             
                             <div class="col-md-4 mb-2">
@@ -56,10 +62,10 @@
 
                             {{-- Descuento --}}
 
-                            <div class="col-md-4 mb-2">
+                            {{-- <div class="col-md-4 mb-2">
                                 <label for="descuento" class="form-label">Descuento: </label>
                                 <input  type="number" name="descuento" id="descuento" class="form-control">
-                            </div>
+                            </div> --}}
 
                             {{-- boton --}}
                             <div class="col-md-12 mt-3 text-end">
@@ -135,13 +141,13 @@
                         <div class="row">
                             {{-- cliente --}}
                             <div class="col-md-12 mb-2">
-                                <label for="cliente_id" class="form-label">Cliente: </label>
-                                <select name="cliente_id" id="cliente_id" class="form-control selectpicker show-tick" data-live-search="true" title="Selecciona" data-size="3">
-                                    @foreach ($clientes as $cliente )
-                                        <option value="{{$cliente->id}}">{{$cliente->persona->razon_social}}</option>
+                                <label for="proveedore_id" class="form-label">Cliente: </label>
+                                <select name="proveedore_id" id="proveedore_id" class="form-control selectpicker show-tick" data-live-search="true" title="Selecciona" data-size="3">
+                                    @foreach ($proveedores as $proveedore )
+                                        <option value="{{$proveedore->id}}">{{$proveedore->persona->razon_social}}</option>
                                     @endforeach
                                 </select>
-                                @error('cliente_id')
+                                @error('proveedore_id')
                                     <small class="text-danger">{{'*'.$message}}</small>
                                 @enderror
                             </div>
@@ -278,7 +284,7 @@
             $('#sumas').html(suma);
             $('#igv').html(igv);
             $('#total').html(total);
-            $('#imouesto').val(impuesto + '%');
+            $('#impuesto').val(impuesto + '%');
             $('#inputTotal').val(total);
 
 
@@ -371,6 +377,8 @@
 
             //eliminar la fila de la tabla
             $('#fila'+indice).remove();
+
+            disableButtons();
         }
 
         function limpiarCampos(){
